@@ -1,0 +1,12 @@
+# Keep the repository lightweight by excluding raw camera/source images.
+# The website uses optimized files from assets/web/.
+assets/*.JPG
+assets/*.jpg
+assets/*.jpeg
+assets/*.png
+!assets/web/
+!assets/web/**
+
+# Local/editor files
+.DS_Store
+Thumbs.db
