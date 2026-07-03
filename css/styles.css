@@ -111,6 +111,47 @@ h3,
   color: var(--ce-indigo);
 }
 
+.social-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.social-links a,
+.icon-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.social-links a {
+  width: 2.15rem;
+  height: 2.15rem;
+  justify-content: center;
+  border: 1px solid rgba(234, 210, 143, 0.36);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.045);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--ce-gold-light);
+  border-color: var(--ce-gold-light);
+  background: rgba(201, 162, 75, 0.14);
+  transform: translateY(-1px);
+}
+
+.social-links-header {
+  padding: 0.4rem 0;
+}
+
+.icon-line i {
+  color: var(--ce-gold-light);
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .btn-ce-gold {
   --bs-btn-bg: var(--ce-gold);
   --bs-btn-border-color: var(--ce-gold);
@@ -402,6 +443,10 @@ h3,
 
 .site-footer a:hover {
   color: var(--ce-gold-light);
+}
+
+.site-footer .icon-line {
+  align-items: flex-start;
 }
 
 .form-control,
