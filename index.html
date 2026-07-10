@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="icon" type="image/png" href="assets/web/logo-ce.png">
-  <link rel="stylesheet" href="css/styles.css?v=20260709-capulana-edge">
+  <link rel="stylesheet" href="css/styles.css?v=20260706-public-renovation">
 </head>
 <body>
   <header class="site-header sticky-top">
@@ -26,18 +26,13 @@
         <div class="collapse navbar-collapse" id="siteNav">
           <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-3">
             <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav.home">Início</a></li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="aboutMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.about">Sobre Nós</a>
-              <ul class="dropdown-menu" aria-labelledby="aboutMenu">
-                <li><a class="dropdown-item" href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li>
-                <li><a class="dropdown-item" href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li>
-                <li><a class="dropdown-item" href="igrejas.html" data-i18n="nav.churches">Igrejas</a></li>
-              </ul>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li>
+            <li class="nav-item"><a class="nav-link" href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li>
             <li class="nav-item"><a class="nav-link" href="culto.html" data-i18n="nav.online">Culto Online</a></li>
+            <li class="nav-item"><a class="nav-link" href="igrejas.html" data-i18n="nav.churches">Igrejas</a></li>
             <li class="nav-item"><a class="nav-link" href="ofertas.html" data-i18n="nav.give">Ofertas</a></li>
             <li class="nav-item"><a class="nav-link" href="contacto.html" data-i18n="nav.contact">Contacto</a></li>
-            <li class="nav-item ms-xl-2 my-3 my-xl-0"><div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Idioma"><button data-lang="pt" class="active">PT</button><button data-lang="en">EN</button><button data-lang="fr">FR</button></div></li>
+            <li class="nav-item ms-xl-2 my-3 my-xl-0"><div class="lang-switch" role="group" aria-label="Idioma"><button data-lang="pt" class="active">PT</button><button data-lang="en">EN</button><button data-lang="fr">FR</button></div></li>
             <li class="nav-item"><div class="social-links social-links-header" aria-label="Redes sociais"><a href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener" aria-label="YouTube"><i class="bi bi-youtube"></i></a></div></li>
             <li class="nav-item"><a class="btn btn-ce-outline" href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal">Portal</a></li>
           </ul>
@@ -113,7 +108,7 @@
                   <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.name">Nome completo</label><input class="form-control" name="full_name" type="text" required></div>
                   <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.phone">Telefone</label><input class="form-control" name="phone" type="tel" required></div>
                   <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.email">E-mail</label><input class="form-control" name="email" type="email"></div>
-                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.church">Igreja</label><select class="form-select" name="church_id"><option value="church-hq">National HQ - Maputo</option><option value="church-matola">Matola</option><option value="church-choupal">Choupal</option><option value="church-khongolote">Khongolote</option><option value="church-malhazine">Malhazine</option><option value="church-hlamankhulo">Hlamankhulo</option><option value="church-maxaquene">Maxaquene</option><option value="church-beira">Beira</option><option value="church-nampula">Nampula</option><option value="church-tete">Tete</option><option value="church-online">Igreja Online</option></select></div>
+                  <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.church">Igreja</label><select class="form-select" name="church_id"><option>National HQ - Maputo</option><option>Matola</option><option>Igreja Online</option></select></div>
                   <div class="col-md-6"><label class="form-label fw-bold" data-i18n="visitor.form.invited">Quem convidou?</label><input class="form-control" name="invited_by" type="text"></div>
                   <div class="col-md-6 d-grid align-content-end gap-2"><label class="form-check"><input class="form-check-input" type="checkbox" name="wants_foundation_school"><span class="form-check-label" data-i18n="visitor.form.foundation">Quero fazer Escola de Fundação</span></label><label class="form-check"><input class="form-check-input" type="checkbox" name="cell_interest"><span class="form-check-label" data-i18n="visitor.form.cell">Tenho interesse numa célula</span></label></div>
                   <div class="col-12 d-flex flex-column flex-sm-row align-items-sm-center gap-3"><button class="btn btn-ce-gold" type="submit" data-i18n="visitor.form.send">Guardar registo</button><p class="form-message mb-0" data-form-message hidden></p></div>
@@ -147,7 +142,7 @@
       </div>
     </section>
 
-    <section class="section-padding section-dark" data-church-grid>
+    <section class="section-padding section-dark">
       <div class="container">
         <div class="row align-items-end mb-4 g-4">
           <div class="col-lg-7">
@@ -157,24 +152,22 @@
           </div>
           <div class="col-lg-5">
             <div class="filter-bar row g-2">
-              <div class="col-md-4"><select class="form-select" data-filter-province><option value="" data-i18n="church.all">Todas</option><option value="Maputo">Maputo</option><option value="Sofala">Sofala</option><option value="Nampula">Nampula</option><option value="Tete">Tete</option><option value="Online">Online</option></select></div>
-              <div class="col-md-4"><select class="form-select" data-filter-city><option value="" data-i18n="church.all">Todas</option><option value="Maputo">Maputo</option><option value="Matola">Matola</option><option value="Beira">Beira</option><option value="Nampula">Nampula</option><option value="Tete">Tete</option><option value="Online">Online</option></select></div>
-              <div class="col-md-4"><select class="form-select" data-filter-type><option value="" data-i18n="church.all">Todas</option><option value="presencial" data-i18n="church.inperson">Presencial</option><option value="online" data-i18n="church.online">Online</option></select></div>
+              <div class="col-md-4"><select class="form-select"><option data-i18n="church.filter.province">Província</option><option>Maputo</option><option>Sofala</option><option>Nampula</option><option>Tete</option></select></div>
+              <div class="col-md-4"><select class="form-select"><option data-i18n="church.filter.city">Cidade</option><option>Maputo</option><option>Matola</option><option>Beira</option></select></div>
+              <div class="col-md-4"><select class="form-select"><option data-i18n="church.filter.type">Presencial / Online</option><option data-i18n="church.inperson">Presencial</option><option data-i18n="church.online">Online</option></select></div>
             </div>
           </div>
         </div>
         <div class="row g-4">
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">HQ</span><h3 class="h5 mt-3">National HQ - Maputo</h3><p class="text-ce-muted mb-3">Av. de Angola, Nº 1818/1824, Maputo</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: Pastor Kene Ume</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Matola" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Matola</h3><p class="text-ce-muted mb-3">Maputo Província</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Choupal</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Matola" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Khongolote</h3><p class="text-ce-muted mb-3">Maputo Província</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Malhazine</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Hlamankhulo</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Maputo" data-city="Maputo" data-type="presencial"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Maxaquene</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Sofala" data-city="Beira" data-type="presencial"><span class="location-badge">Sofala</span><h3 class="h5 mt-3">Beira</h3><p class="text-ce-muted mb-3">Sofala</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Nampula" data-city="Nampula" data-type="presencial"><span class="location-badge">Nampula</span><h3 class="h5 mt-3">Nampula</h3><p class="text-ce-muted mb-3">Nampula</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Tete" data-city="Tete" data-type="presencial"><span class="location-badge">Tete</span><h3 class="h5 mt-3">Tete</h3><p class="text-ce-muted mb-3">Tete</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
-          <div class="col-md-6 col-xl-4" data-church-col><article class="location-card h-100 p-4" data-church-card data-province="Online" data-city="Online" data-type="online"><span class="location-badge">Online</span><h3 class="h5 mt-3">Igreja Online</h3><p class="text-ce-muted mb-3">Para Moçambique e diáspora</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: Equipa Online</p><a href="culto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">HQ</span><h3 class="h5 mt-3">National HQ - Maputo</h3><p class="text-ce-muted mb-3">Av. de Angola, Nº 1818/1824, Maputo</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: Pastor Kene Ume</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Matola</h3><p class="text-ce-muted mb-3">Maputo Província</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Choupal</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Khongolote</h3><p class="text-ce-muted mb-3">Maputo Província</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Malhazine</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Hlamankhulo</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Maputo</span><h3 class="h5 mt-3">Maxaquene</h3><p class="text-ce-muted mb-3">Maputo Cidade</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Sofala</span><h3 class="h5 mt-3">Beira</h3><p class="text-ce-muted mb-3">Sofala</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: A confirmar</p><a href="contacto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
+          <div class="col-md-6 col-xl-4"><article class="location-card h-100 p-4"><span class="location-badge">Online</span><h3 class="h5 mt-3">Igreja Online</h3><p class="text-ce-muted mb-3">Para Moçambique e diáspora</p><p class="small mb-3"><strong data-i18n="church.pastor">Pastor responsável</strong>: Equipa Online</p><a href="culto.html" class="btn btn-ce-dark btn-sm" data-i18n="church.visit">Ver detalhes</a></article></div>
         </div>
       </div>
     </section>
@@ -206,7 +199,7 @@
         <div class="col-lg-4"><h2 class="h5" data-i18n="foot.about">Christ Embassy Moçambique</h2><p class="mb-0" data-i18n="foot.aboutText">Uma igreja, uma família e uma visão para levar a presença de Deus às nações e demonstrar o caráter do Espírito.</p></div>
         <div class="col-6 col-lg-2"><h3 class="h6" data-i18n="foot.links">Ligações</h3><ul class="list-unstyled small d-grid gap-2"><li><a href="index.html" data-i18n="nav.home">Início</a></li><li><a href="sobre.html" data-i18n="nav.about">Sobre Nós</a></li><li><a href="ministerios.html" data-i18n="nav.ministries">Ministérios</a></li><li><a href="igrejas.html" data-i18n="nav.churches">Igrejas</a></li><li><a href="https://app.embaixada-de-cristo.obiuba.com/" target="_blank" rel="noopener" data-i18n="nav.portal">Portal</a></li></ul></div>
         <div class="col-6 col-lg-3"><h3 class="h6" data-i18n="foot.contact">Contacto</h3><ul class="list-unstyled small d-grid gap-2"><li class="icon-line"><i class="bi bi-geo-alt-fill"></i><span data-i18n="foot.addr">Av. de Angola, Nº 1818/1824, Maputo</span></li><li class="icon-line"><i class="bi bi-telephone-fill"></i><span>+258 86 227 0000</span></li><li class="icon-line"><i class="bi bi-envelope-fill"></i><span data-i18n="foot.email.note">A confirmar</span></li></ul></div>
-        <div class="col-lg-3"><h3 class="h6" data-i18n="foot.follow">Siga-nos</h3><ul class="list-unstyled small d-grid gap-2"><li><a class="icon-line" href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener"><i class="bi bi-facebook"></i><span data-i18n="foot.fb">Facebook</span></a></li><li><a class="icon-line" href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i><span data-i18n="foot.ig">Instagram</span></a></li><li><a class="icon-line" href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener"><i class="bi bi-youtube"></i><span data-i18n="foot.yt">YouTube</span></a></li></ul></div>
+        <div class="col-lg-3"><h3 class="h6" data-i18n="foot.follow">Siga-nos</h3><ul class="list-unstyled small d-grid gap-2"><li><a class="icon-line" href="https://www.facebook.com/christembassymozambique" target="_blank" rel="noopener"><i class="bi bi-facebook"></i><span>Facebook</span></a></li><li><a class="icon-line" href="https://www.instagram.com/embaixada_de_cristo_mocambique/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i><span>Instagram</span></a></li><li><a class="icon-line" href="https://www.youtube.com/@embaixadadecristomocambiqu6895" target="_blank" rel="noopener"><i class="bi bi-youtube"></i><span>YouTube</span></a></li></ul></div>
       </div>
       <div class="border-top border-warning border-opacity-25 pt-4 d-flex flex-column flex-md-row justify-content-between gap-2 small">
         <span>&copy; 2026 Christ Embassy Moçambique. <span data-i18n="foot.rights">Todos os direitos reservados.</span></span>
@@ -216,7 +209,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/i18n.js?v=20260708-dark-cards"></script>
-  <script src="js/site.js?v=20260708-dark-cards"></script>
+  <script src="js/i18n.js?v=20260706-public-renovation"></script>
 </body>
 </html>
