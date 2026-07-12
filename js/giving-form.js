@@ -280,7 +280,8 @@ async function buildGivingSubmission(form) {
   const fileInput = form.querySelector("[name='comprovativo_upload']");
   const file = fileInput?.files?.[0];
   let comprovativo_url = "";
-  if (file) comprovativo_url = await readFileAsDataUrl(file);
+  const useSupabase = window.CESupabaseGiving?.isConfigured?.();
+  if (file && !useSupabase) comprovativo_url = await readFileAsDataUrl(file);
 
   const groupId = `sg-${Date.now()}`;
   return {
@@ -398,9 +399,21 @@ function initGivingModal() {
 
     try {
       const submission = await buildGivingSubmission(form);
-      if (typeof window.enqueuePublicGivingSubmission === "function") {
-        window.enqueuePublicGivingSubmission(submission);
+      const proofFile = form.querySelector("[name='comprovativo_upload']")?.files?.[0] || null;
+      let saved = false;
+
+      if (typeof window.submitPublicGivingViaSupabase === "function" && window.CESupabaseGiving?.isConfigured?.()) {
+        const result = await window.submitPublicGivingViaSupabase(submission, proofFile);
+        saved = Boolean(result?.ok);
       }
+
+      if (!saved && typeof window.enqueuePublicGivingSubmission === "function") {
+        window.enqueuePublicGivingSubmission(submission);
+        saved = true;
+      }
+
+      if (!saved) throw new Error("No submission handler available");
+
       showGivingAlert(givingT("giving.success", lang), "success");
       form.reset();
       updateGivingTotal();
