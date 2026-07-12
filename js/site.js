@@ -98,4 +98,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavActive();
   initChurchFilters();
   initReveal();
+  if (typeof initGivingModal === "function") initGivingModal();
 });

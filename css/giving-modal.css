@@ -1,0 +1,287 @@
+/* Public giving confirmation modal — navy, gold, cyan */
+.giving-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  background: rgba(7, 19, 38, 0.72);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.giving-modal-backdrop.is-open {
+  opacity: 1;
+}
+
+.giving-modal {
+  position: fixed;
+  z-index: 1090;
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -48%) scale(0.96);
+  width: min(920px, calc(100vw - 1.5rem));
+  max-height: min(92vh, 900px);
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.08), transparent 28%),
+    linear-gradient(160deg, #071326 0%, #0d1f3d 58%, #0a1830 100%);
+  border: 1px solid rgba(215, 173, 69, 0.28);
+  border-radius: 1.25rem;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+  color: #f4f8ff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.giving-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.giving-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.giving-modal-head h2 {
+  margin: 0.35rem 0 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  color: #fff;
+}
+
+.giving-modal-close {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.giving-modal-close:hover {
+  background: rgba(34, 211, 238, 0.14);
+  border-color: rgba(34, 211, 238, 0.45);
+}
+
+.giving-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem 1.25rem;
+  scrollbar-color: rgba(215, 173, 69, 0.45) transparent;
+}
+
+.giving-modal-foot {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  padding: 0.9rem 1.5rem 1.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 19, 38, 0.55);
+}
+
+.giving-section {
+  margin-bottom: 1.35rem;
+}
+
+.giving-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ce-gold, #d7ad45);
+}
+
+.giving-section-title i {
+  color: var(--ce-cyan, #22d3ee);
+}
+
+.giving-modal .form-label {
+  color: rgba(244, 248, 255, 0.88);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.giving-modal .form-control,
+.giving-modal .form-select {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-radius: 0.7rem;
+  min-height: 2.65rem;
+}
+
+.giving-modal .form-control:focus,
+.giving-modal .form-select:focus {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: 0 0 0 0.2rem rgba(34, 211, 238, 0.16);
+  color: #fff;
+}
+
+.giving-modal .form-control::placeholder {
+  color: rgba(244, 248, 255, 0.42);
+}
+
+.giving-modal .form-select option {
+  color: #071326;
+}
+
+.giving-category-grid {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.giving-category-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 9.5rem;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.giving-category-row label {
+  margin: 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: rgba(244, 248, 255, 0.92);
+}
+
+.giving-category-row input {
+  text-align: right;
+}
+
+.giving-total-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.85rem;
+  background: rgba(215, 173, 69, 0.12);
+  border: 1px solid rgba(215, 173, 69, 0.28);
+}
+
+.giving-total-bar span {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ce-gold, #d7ad45);
+}
+
+.giving-total-bar strong {
+  font-size: 1.15rem;
+  color: #fff;
+}
+
+.giving-outros-wrap {
+  margin-top: 0.75rem;
+}
+
+.giving-outros-wrap.d-none {
+  display: none !important;
+}
+
+.giving-file-hint {
+  margin-top: 0.35rem;
+  font-size: 0.74rem;
+  color: rgba(244, 248, 255, 0.55);
+}
+
+.giving-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.giving-form-error {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.7rem;
+  background: rgba(220, 53, 69, 0.16);
+  border: 1px solid rgba(220, 53, 69, 0.35);
+  color: #ffb4bc;
+  font-size: 0.84rem;
+}
+
+.giving-form-success {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.7rem;
+  background: rgba(34, 211, 238, 0.12);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  color: #b8f4ff;
+  font-size: 0.84rem;
+}
+
+.giving-modal-foot .btn-outline-giving {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: rgba(255, 255, 255, 0.28);
+  --bs-btn-hover-bg: rgba(255, 255, 255, 0.08);
+  --bs-btn-hover-border-color: rgba(255, 255, 255, 0.42);
+  --bs-btn-hover-color: #fff;
+}
+
+@media (max-width: 767.98px) {
+  .giving-modal {
+    inset: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    border-radius: 0;
+    transform: translateY(100%);
+  }
+
+  .giving-modal.is-open {
+    transform: translateY(0);
+  }
+
+  .giving-category-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .giving-category-row input {
+    text-align: left;
+  }
+
+  .giving-modal-foot {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .giving-modal-foot .btn {
+    flex: 1;
+    min-height: 2.85rem;
+  }
+}
