@@ -30,6 +30,59 @@ const DEFAULT_PUBLIC_CHURCHES = [
   { id: "church-virtual", name: "CE Mozambique Online Church", public_name: "Igreja Embaixada de Cristo Online" }
 ];
 
+const PUBLIC_CELL_GROUP_DEFINITIONS = [
+  ["Dominio", 2], ["Visionarios", 1], ["Transformadas", 3], ["Gods CEO Main", 17], ["Diplomats Victory", 9],
+  ["Wealth Nation Main", 10], ["Mulheres de Substancia Main", 10], ["Homens de Propósito", 8], ["Perola do Reino Main", 10],
+  ["Queens of Glory Main", 6], ["Agathos Main", 7], ["Phronesis Business Main", 9], ["Pais de Fe", 7], ["Estrelas de Sião", 8],
+  ["Vanguard Main", 7], ["Mighty Women of Valor Main", 10], ["Luzes de Sião", 5], ["Geração Eleita Main", 5],
+  ["Geração Eleita Supreme", 4], ["Pioneiros Substance", 14], ["Pioneiros Charis", 4], ["Realeza Central", 17],
+  ["Realeza Valentes", 4], ["Realeza Brilhante", 14], ["Realeza Geração Esperança", 7], ["Royal Sisters Main", 19],
+  ["Royal Sisters Shine Main", 6], ["Royal Sisters Dominion", 6], ["Royal Sisters Excellence", 5], ["Coroa Real Main", 5],
+  ["Coroa Real Rainhas de Cristo", 7], ["Blossom Main", 3], ["Blossom Perfection Main", 7], ["Blossom Diamante Main", 5],
+  ["Nação Santa", 11], ["Men of Vision", 14], ["Men of Vision Giants", 4], ["Elevadas Main", 28], ["Destemidas Main", 9],
+  ["Genesis Main", 9], ["Genesis Eternal Excellence", 4], ["Ambassadors Main", 16]
+];
+
+function buildPublicCellOptions() {
+  const groups = [];
+  const cells = [];
+  PUBLIC_CELL_GROUP_DEFINITIONS.forEach(([name, total], index) => {
+    const groupId = `cg-${String(index + 1).padStart(3, "0")}`;
+    groups.push({ id: groupId, group_name: name, church_id: "church-hq", status: "Activo", needs_review: true });
+    for (let i = 1; i <= total; i += 1) {
+      cells.push({
+        id: `cr-${String(cells.length + 1).padStart(4, "0")}`,
+        cell_name: `${name} Cell ${String(i).padStart(2, "0")}`,
+        group_id: groupId,
+        church_id: "church-hq",
+        needs_review: true
+      });
+    }
+  });
+  return { groups, cells };
+}
+
+function getPublicCellOptions(churchId = "") {
+  try {
+    const dash = JSON.parse(localStorage.getItem(DASHBOARD_STORAGE_KEY) || "null");
+    if (dash?.cellGroups?.length && dash?.cellRegistry?.length) {
+      const groups = dash.cellGroups.filter((group) => !churchId || group.church_id === churchId);
+      const cells = dash.cellRegistry.filter((cell) => !churchId || cell.church_id === churchId);
+      return {
+        groups: groups.length ? groups : dash.cellGroups,
+        cells: groups.length ? cells : dash.cellRegistry
+      };
+    }
+  } catch {}
+  const fallback = buildPublicCellOptions();
+  const groups = fallback.groups.filter((group) => !churchId || group.church_id === churchId);
+  const cells = fallback.cells.filter((cell) => !churchId || cell.church_id === churchId);
+  return {
+    groups: groups.length ? groups : fallback.groups,
+    cells: groups.length ? cells : fallback.cells
+  };
+}
+
 function getPublicChurchOptions() {
   try {
     const dash = JSON.parse(localStorage.getItem(DASHBOARD_STORAGE_KEY) || "null");
@@ -70,6 +123,10 @@ function buildFinanceRecordsFromSubmission(submission) {
     endereco: "",
     celula: submission.celula || "",
     grupo_de_celula: submission.grupo_de_celula || "",
+    cell_id: submission.cell_id || "",
+    cell_name: submission.cell_name || submission.celula || "",
+    cell_group_id: submission.cell_group_id || "",
+    cell_group_name: submission.cell_group_name || submission.grupo_de_celula || "",
     data_de_aniversario: submission.data_de_aniversario || "",
     church_id: submission.igreja_id,
     igreja: submission.igreja_nome,
@@ -147,5 +204,6 @@ window.PUBLIC_GIVING_QUEUE_KEY = PUBLIC_GIVING_QUEUE_KEY;
 window.PUBLIC_GIVING_CATEGORIES = PUBLIC_GIVING_CATEGORIES;
 window.PUBLIC_PAYMENT_METHODS = PUBLIC_PAYMENT_METHODS;
 window.getPublicChurchOptions = getPublicChurchOptions;
+window.getPublicCellOptions = getPublicCellOptions;
 window.enqueuePublicGivingSubmission = enqueuePublicGivingSubmission;
 window.buildFinanceRecordsFromSubmission = buildFinanceRecordsFromSubmission;

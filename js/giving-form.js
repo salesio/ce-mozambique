@@ -94,11 +94,16 @@ function buildGivingModalMarkup() {
               </div>
               <div class="col-md-6">
                 <label class="form-label" for="giving_cell_group" data-i18n="giving.field.cellGroup">Grupo de célula</label>
-                <input class="form-control" id="giving_cell_group" name="grupo_de_celula" type="text">
+                <select class="form-select" id="giving_cell_group" name="cell_group_id">
+                  <option value="" data-i18n="giving.field.cellGroupPlaceholder">Seleccione o grupo de célula</option>
+                </select>
               </div>
               <div class="col-12">
                 <label class="form-label" for="giving_cell" data-i18n="giving.field.cell">Célula</label>
-                <input class="form-control" id="giving_cell" name="celula" type="text">
+                <select class="form-select" id="giving_cell" name="cell_id" disabled>
+                  <option value="" data-i18n="giving.field.cellPlaceholder">Seleccione a célula</option>
+                </select>
+                <p id="givingCellEmpty" class="giving-file-hint d-none" data-i18n="giving.field.noCells">Nenhuma célula registada neste grupo.</p>
               </div>
             </div>
           </section>
@@ -284,6 +289,11 @@ async function buildGivingSubmission(form) {
   if (file && !useSupabase) comprovativo_url = await readFileAsDataUrl(file);
 
   const groupId = `sg-${Date.now()}`;
+  const cellOptions = window.getPublicCellOptions?.(churchId) || { groups: [], cells: [] };
+  const cellGroupId = String(data.get("cell_group_id") || "");
+  const cellId = String(data.get("cell_id") || "");
+  const selectedGroup = cellOptions.groups.find((group) => group.id === cellGroupId);
+  const selectedCell = cellOptions.cells.find((cell) => cell.id === cellId);
   return {
     id: `pgs-${Date.now()}`,
     submission_group_id: groupId,
@@ -293,8 +303,12 @@ async function buildGivingSubmission(form) {
     email: String(data.get("email") || "").trim(),
     igreja_id: churchId,
     igreja_nome: church?.name || church?.public_name || "",
-    grupo_de_celula: String(data.get("grupo_de_celula") || "").trim(),
-    celula: String(data.get("celula") || "").trim(),
+    cell_group_id: cellGroupId,
+    cell_group_name: selectedGroup?.group_name || "",
+    grupo_de_celula: selectedGroup?.group_name || "",
+    cell_id: cellId,
+    cell_name: selectedCell?.cell_name || "",
+    celula: selectedCell?.cell_name || "",
     contribuicoes,
     outros_descricao: String(data.get("outros_descricao") || "").trim(),
     metodo_de_pagamento: String(data.get("metodo_de_pagamento") || ""),
@@ -315,6 +329,7 @@ function openGivingModal() {
   if (!backdrop || !modal) return;
   clearGivingAlert();
   form?.reset();
+  refreshGivingCellGroups();
   updateGivingTotal();
   backdrop.classList.remove("d-none");
   modal.classList.remove("d-none");
@@ -352,6 +367,30 @@ function refreshGivingChurchSelect() {
   if (current) select.value = current;
 }
 
+function refreshGivingCellGroups() {
+  const churchId = document.getElementById("giving_church")?.value || "";
+  const groupSelect = document.getElementById("giving_cell_group");
+  if (!groupSelect) return;
+  const lang = document.documentElement.lang || "pt";
+  const options = window.getPublicCellOptions?.(churchId) || { groups: [], cells: [] };
+  groupSelect.innerHTML = `<option value="">${givingT("giving.field.cellGroupPlaceholder", lang)}</option>${options.groups.map((group) => `<option value="${group.id}">${group.group_name}</option>`).join("")}`;
+  refreshGivingCells();
+}
+
+function refreshGivingCells() {
+  const churchId = document.getElementById("giving_church")?.value || "";
+  const groupId = document.getElementById("giving_cell_group")?.value || "";
+  const cellSelect = document.getElementById("giving_cell");
+  const empty = document.getElementById("givingCellEmpty");
+  if (!cellSelect) return;
+  const lang = document.documentElement.lang || "pt";
+  const options = window.getPublicCellOptions?.(churchId) || { groups: [], cells: [] };
+  const cells = options.cells.filter((cell) => cell.group_id === groupId || cell.cell_group_id === groupId);
+  cellSelect.innerHTML = `<option value="">${givingT("giving.field.cellPlaceholder", lang)}</option>${cells.map((cell) => `<option value="${cell.id}">${cell.cell_name}</option>`).join("")}`;
+  cellSelect.disabled = !groupId;
+  empty?.classList.toggle("d-none", !groupId || cells.length > 0);
+}
+
 function initGivingModal() {
   if (!document.getElementById("givingModal")) {
     document.body.insertAdjacentHTML("beforeend", buildGivingModalMarkup());
@@ -359,6 +398,7 @@ function initGivingModal() {
 
   const { form, backdrop } = getGivingElements();
   refreshGivingChurchSelect();
+  refreshGivingCellGroups();
 
   document.querySelectorAll("[data-open-giving-modal]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
@@ -382,6 +422,11 @@ function initGivingModal() {
 
   form?.addEventListener("input", (event) => {
     if (event.target.matches("[data-giving-category]")) updateGivingTotal();
+  });
+
+  form?.addEventListener("change", (event) => {
+    if (event.target.id === "giving_church") refreshGivingCellGroups();
+    if (event.target.id === "giving_cell_group") refreshGivingCells();
   });
 
   form?.addEventListener("submit", async (event) => {
@@ -416,6 +461,7 @@ function initGivingModal() {
 
       showGivingAlert(givingT("giving.success", lang), "success");
       form.reset();
+      refreshGivingCellGroups();
       updateGivingTotal();
       setTimeout(closeGivingModal, 2200);
     } catch {
@@ -436,6 +482,7 @@ function initGivingModal() {
         }
       });
       refreshGivingChurchSelect();
+      refreshGivingCellGroups();
       updateGivingTotal();
     }
   });
